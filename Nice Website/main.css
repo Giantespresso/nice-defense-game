@@ -1,0 +1,92 @@
+body {
+  background-color:#B3DEE5;
+}
+
+h2 {
+  color: white;
+}
+
+p {
+  color:white;
+}
+
+footer {
+
+}
+
+#inst {
+  width: 880px;
+}
+
+.body {
+  position:relative;
+  top: 40px;
+  left: 100px;
+}
+
+.header {
+	top: 0;
+	left: 0;
+  	width: 100%;
+	background-color:#FFA101;
+	height:170px;
+}
+
+.title {
+  	position:absolute;
+  	top: 30px;
+	color:rgb(255, 255, 255);
+	background-image:linear-gradient(0deg, rgb(141, 141, 141) 0%,rgba(255, 255, 255) 100%) ;
+	-webkit-background-clip:text;
+	-webkit-text-fill-color:transparent;
+	-moz-background-clip:text;
+	-moz-text-fill-color:transparent;
+	-ms-background-clip:text;
+	-ms-text-fill-color:transparent;
+	width:957px;
+	height:221px;
+	font-family:Inika;
+	text-align:center;
+	font-size:96px;
+	letter-spacing:0;
+}
+
+
+.game {
+  	left:100px;
+  	top: 50px;
+	background-color:rgba(255, 255, 255, 1);
+	width:880px;
+	height:487px;
+}
+
+
+
+#message-container {
+	position: absolute;
+	top: 190px;
+  	left: 1000px;
+}
+
+#message-container div:nth-child(2n) {
+	background-color: #FFF;
+}
+
+#message-container div:nth-child(2n - 1) {
+	background-color: rgb(150, 150, 150);
+}
+
+#send-container {
+  	bottom: 0;
+	left: 100px;
+	/*position: fixed;*/
+    padding-bottom: 0;
+    max-width: 500px;
+    width: 40%;
+    /*display: flex;*/
+}
+
+#buttons {
+	position: absolute;
+	left: 270px;
+}
