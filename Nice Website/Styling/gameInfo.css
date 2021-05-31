@@ -5,6 +5,10 @@ div .gameInformation{
 .hidden{
     display: none;
 }
+
+#infoButton:hover{
+    font-size: 225%;
+}
 .characters{
 
 }
@@ -53,4 +57,12 @@ div .gameInformation{
 }
 section{
     display: block;
+}
+
+.gPics{
+    width: 45%;
+}
+
+.gameText{
+    width: 50%;
 }
