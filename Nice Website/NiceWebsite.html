@@ -2,10 +2,14 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="main.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="Styling/main.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="Styling/gameInfo.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Spartan&display=swap" rel="stylesheet">
     <title></title>
     <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script defer src="script.js"></script>
+    <script src="Scripts/DisplayScript.js"></script>
   </head>
   <body>
 
@@ -15,13 +19,74 @@
       <span  class="title">Nice Tower Defense </span>
     </div>
     <div class="body">
+      <h1>Game Information</h1>
+      <div class="gameInformation">
+        <h1 id="infoButton" onclick="DisplayInfo()">Welcome to the Nice Tower Defense</h1>
+        <div id="gamerBoy" class="hidden">
+          <h2>The Objective is Simple:</h2>
+          <p class="characterText">Battle back the incoming waves of Kitchen Utensils with the help of some Produce. For every utensil you push back, earn more
+            credits to get even more produce.
+          </p>
+          <div id="CharacterIntro">
+            <div id="tab">
+              <button class="cButton" onclick="SetActive('Carrot')">
+                Carrot
+              </button>
+              <button class="cButton" onclick="SetActive('Apple')">
+                Apple
+              </button>
+              <button class="cButton" onclick="SetActive('Spatula')">
+                Spatula
+              </button>
+              <button class="cButton" onclick="SetActive('Pan')">
+                Pan
+              </button>
+            </div>
+
+            <section class="characters" id="Carrot">
+              <p class="characterText">Meet the Carrot</p>
+              <img class="pic" src="Assets/Images/Carrot.png"/>
+              <p class="characterText">The sharpest vegetable in the drawer, the carrot is a single target tower that is cheap. The carrot is pivotal for stopping any utensils from reaching the goal</p>
+            </section>
+
+            <section class="characters hidden" id="Apple">
+              <p class="characterText">Meet the Apple</p>
+              <img class="pic" src="Assets/Images/Apple.png" />
+              <p class="characterText">
+                An apple a day keeps the doctor away, as well as any kitchen utensils in the area. The Apple deals Area of Effect damage to kitchen utensils nearby, being able to stop more than one utensil at a time. Although a little more costly, the Apple makes a great addition to any defense
+              </p>
+            </section>
+
+            <section class="characters hidden" id ="Spatula">
+              <p class="characterText">Meet the Spatula</p>
+              <img class="pic" src="Assets/Images/Spatula.png" />
+              <p class="characterText">
+                The Spatula is always frowning, and is very sad about walking into a field of produce that does not like him. The spatula is a basic enemy, who moves around very slowly. 
+              </p>
+
+            </section>
+
+            <section class="characters hidden" id="Pan">
+              <p class="characterText">Meet the Pan</p>
+              <img class="pic" src="Assets/Images/Pan.png">
+              <p class="characterText">
+                Like the Spatula, the Pan is also sad about opposing the vegetables that were once friendly. Unlike the Spatula, the Pan is a real threat to your defense, being faster and much more durable. Vegetables beware.
+              </p>
+            </section>
+          </div>
+        </div>
+      </div>
+      <!---
       <div class="game">Nice Defense Game</div>
+      --->
       <p>Game created by: Riley Richards, Junwon Song, and Mathew Tang</p>
       <h2>Instruction:</h2>
       <p id="inst">Nice Defense Game is a child frienly Tower Defense game. The goal of the
       game is to place down different types of food in order to prevent the kitchen
       appliences from making it to the end of the map. If you survive all the waves
       you win.</p>
+
+      <h1>Media:</h1>
       <h2>Send Message:</h2>
     </div>
     <div class="list">

@@ -1,0 +1,56 @@
+div .gameInformation{
+
+}
+
+.hidden{
+    display: none;
+}
+.characters{
+
+}
+
+#CharacterIntro{
+    text-align: center;
+    background-color: white;
+    width: 50%;
+}
+
+#carrot{
+    width: 5%;
+}
+
+#tab{
+    text-align: center;
+    display: inline-block;
+    padding: 0;
+}
+
+.cButton{
+    background-color: black;
+    color: white;
+    border: none;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    float: left;
+    font-size: 125%;
+}
+
+.cButton:hover{
+    color: blue;
+}
+
+.pic{
+    width: 160px;
+    height: 160px;
+}
+
+.characterText{
+    color: black;
+}
+
+#infoButton{
+    display: block;
+}
+section{
+    display: block;
+}
