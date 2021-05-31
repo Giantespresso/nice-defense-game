@@ -35,9 +35,6 @@ public class Enemy : MonoBehaviour {
         NextMoveTo(); //Setting the next direction that the enemy has to move to
 
         while (true) {
-            //Enemy object's rotation (just to make it look a little more dynamic)
-            transform.Rotate(Vector3.forward * 10); 
-
             /*If the enemy is 0.02 * movement2D.MoveSpeed away from the next way point (right next
             to the next WayPoint), set the next target wayPoint for the enemy to move to*/
             if (Vector3.Distance(transform.position, wayPoints[currentIndex].position) < 0.02f * movement2D.MoveSpeed) {

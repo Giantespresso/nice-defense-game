@@ -22,18 +22,21 @@ public class ObjectDetector : MonoBehaviour {
         if (Input.GetMouseButtonDown(0)) {
             //Creating the ray that goes between the position of the camera and the mouse position
             ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            Vector3 pos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
             //Enables us to select the objects from the 3D world from 2D world
             //Saving the objects that is detected by the ray to "hit"
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity)) { 
+            if (Physics.Raycast(pos, Vector3.forward, out hit, 11f)) { 
                 //If the object that is detected by the ray has "tile" as a tag
                 if (hit.transform.CompareTag("Tile")) {
                     //Call SpawnTower()
                     towerSpawner.SpawnTower(hit.transform);
                 }
                 else if (hit.transform.CompareTag("Tower")) {
+                    Debug.Log(hit.transform.gameObject);
                     towerDataViewer.PanelOn(hit.transform);
                 }
+                Debug.Log(hit.transform.gameObject);
             }
         }
     }

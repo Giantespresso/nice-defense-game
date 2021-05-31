@@ -2,25 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SliderPositionAutoSettler : MonoBehaviour
-{
+public class SliderPositionAutoSettler : MonoBehaviour {
     [SerializeField]
     private Vector3 distance = Vector3.down * 20.0f;
     private Transform targetTransform;
     private RectTransform rectTransform; //Inhereted from transform but also has anchoring property
 
-    public void Setup(Transform target)
-    {
+    public void Setup(Transform target) {
         //Setting the target for the slider UI to follow
         targetTransform = target;
         rectTransform = GetComponent<RectTransform>();
     }
 
-    private void LateUpdate()
-    {
+    private void LateUpdate() {
         //If the enemy dies, delete the slider UI
-        if (targetTransform == null)
-        {
+        if (targetTransform == null) {
             Destroy(gameObject);
             return;
         }

@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class EnemyWave : MonoBehaviour
-{
+public class EnemyWave : MonoBehaviour {
     [SerializeField]
     private Wave[] waves; //Information of all of the current stage's waves
     [SerializeField]
@@ -12,10 +11,8 @@ public class EnemyWave : MonoBehaviour
     public int CurrentWave => currentWaveIndex + 1;
     public int MaxWave => waves.Length;
 
-    public void StartWave()
-    {
-        if (enemySpawner.EnemyList.Count == 0 && currentWaveIndex < waves.Length - 1)
-        {
+    public void StartWave() {
+        if (enemySpawner.EnemyList.Count == 0 && currentWaveIndex < waves.Length - 1) {
             currentWaveIndex++;
             //Call the StartWave() and provide the current wave info
             enemySpawner.StartWave(waves[currentWaveIndex]);
@@ -24,8 +21,7 @@ public class EnemyWave : MonoBehaviour
 }
 
 [System.Serializable]
-public struct Wave
-{
+public struct Wave {
     public float spawnTime;
     public int maxEnemyCount;
     public GameObject[] enemyPrefabs;

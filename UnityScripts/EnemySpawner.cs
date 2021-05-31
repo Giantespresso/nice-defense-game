@@ -31,6 +31,7 @@ public class EnemySpawner : MonoBehaviour {
         
         //Stop the coroutine after the spawnEnemyCount reaches the maxEnemyCount
         while (spawnEnemyCount < currentWave.maxEnemyCount) {
+            Debug.Log("Spawn");
             int enemyIndex = Random.Range(0, currentWave.enemyPrefabs.Length);
             GameObject clone = Instantiate(currentWave.enemyPrefabs[enemyIndex]);
             Enemy enemy = clone.GetComponent<Enemy>(); //The component of the enemy that was just created
@@ -40,7 +41,7 @@ public class EnemySpawner : MonoBehaviour {
             //Saving the enemy that's been just created to a list
             enemyList.Add(enemy);
 
-            SpawnEnemyHealthSlider(clone);
+            //SpawnEnemyHealthSlider(clone);
 
             //To keep track of how many enemies has been spawned
             spawnEnemyCount++;
@@ -56,7 +57,6 @@ public class EnemySpawner : MonoBehaviour {
         }
         else if (type == EnemyDestroyType.kill) {
             creditManager.Credits += credit;
-            //Debug.Log(creditManager.Credits);
         }
         //Deleting the enemy from the list when it dies
         enemyList.Remove(enemy);

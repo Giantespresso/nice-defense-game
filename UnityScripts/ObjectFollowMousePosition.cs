@@ -10,8 +10,7 @@ public class ObjectFollowMousePosition : MonoBehaviour {
 
     private void Update() {
         // If the user clicks, the preivew tower is removed
-        if (Input.GetMouseButtonDown(0))
-        {
+        if (Input.GetMouseButtonDown(0)) {
             Destroy(this.gameObject);
         }
 

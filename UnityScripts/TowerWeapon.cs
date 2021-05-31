@@ -20,6 +20,9 @@ public class TowerWeapon : MonoBehaviour {
     private int level = 0; //Tower's level
     public Projectile projectile;
 
+    [SerializeField]
+    public int towerCost;
+
     // List of targets within range
     private List<GameObject> targets = new List<GameObject>();
 
@@ -33,31 +36,27 @@ public class TowerWeapon : MonoBehaviour {
     public int Level => level + 1;
 
     // If the enemy enters this tower's range, add the enemy to list of targets
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
+    private void OnTriggerEnter2D(Collider2D collision) {
         /* If the object is an enemy, then add it to the list */
-        if (collision.tag == "Enemy")
-        {
+        if (collision.tag == "Enemy") {
+            Debug.Log("Enemy Found");
             targets.Add(collision.gameObject);
         }
     }
 
     // If an enemy comes into range, add the enemy to the list of targets
-    private void OnTriggerExit2D(Collider2D collision)
-    {
+    private void OnTriggerExit2D(Collider2D collision) {
         if (collision.tag == "Enemy")
         {
             targets.Remove(collision.gameObject);
         }
     }
 
-    private void Start()
-    {
+    private void Start() {
         Setup();
     }
-    public void Setup() {
-        //this.gameObject.GetComponent<CircleCollider2D>().radius = attackRange;
 
+    public void Setup() {
         //Set the first state as WeaponState.SearchTarget
         ChangeState(WeaponState.SearchTarget);
     }
@@ -89,27 +88,7 @@ public class TowerWeapon : MonoBehaviour {
     // Search Target is the standby mode for towers, when nothing is in range, the tower is in this state
     private IEnumerator SearchTarget() { 
         while (true) {
-            ////Setting the initial distance as big as possible to start finding the enemy that's the closest
-            //float closestDistSqr = Mathf.Infinity;
-
-            ////Checking the existing enemies that's in the EnemySpawner's EnemyList
-            //for (int i = 0; i < enemySpawner.EnemyList.Count; ++ i) {
-            //    float distance = Vector3.Distance(enemySpawner.EnemyList[i].transform.position, transform.position);
-
-            //    //If the enemy's within the range and the closest amongst all of the enemies that's been checked
-            //    if (distance <= attackRange && distance <= closestDistSqr) {
-            //        closestDistSqr = distance;
-            //        attackTarget = enemySpawner.EnemyList[i].transform;
-            //    }
-            //}
-
-            ////Attack the target if the attackTarget is not null
-            //if (attackTarget != null) {
-            //    ChangeState(WeaponState.AttackToTarget);
-            //}
-
-            if (targets.Count > 0)
-            {
+            if (targets.Count > 0) {
                 ChangeState(WeaponState.AttackToTarget);
             }
 
@@ -120,38 +99,21 @@ public class TowerWeapon : MonoBehaviour {
     // Attack to target is the state in which there is an enemy in range of the tower
     private IEnumerator AttackToTarget() { 
         while (true) {
-            ////1. Checking if there's a target
-            //if (attackTarget == null) {
-            //    ChangeState(WeaponState.SearchTarget);
-            //    break;
-            //}
-
-            ////2. Checking if there's a target within a distance
-            //float distance = Vector3.Distance(attackTarget.position, transform.position);
-            //if (distance > attackRange) {
-            //    attackTarget = null;
-            //    ChangeState(WeaponState.SearchTarget);
-            //    break;
-            //}
-
             // Reset the target to null every run, to again find the furthest enemy in range
             attackTarget = null;
 
 
             // Find the furthest enemy in range iterating through the enemies in range
             float furthest = 0;
-            foreach(GameObject x in targets)
-            {
-                if (x.GetComponent<Movement2D>().GetDistanceTravelled() > furthest)
-                {
+            foreach(GameObject x in targets) {
+                if (x.GetComponent<Movement2D>().GetDistanceTravelled() > furthest) {
                     attackTarget = x.transform;
                     furthest = attackTarget.gameObject.GetComponent<Movement2D>().GetDistanceTravelled();
                 }
             }
 
             // If we could not find an enemy, return to standby
-            if (attackTarget == null)
-            {
+            if (attackTarget == null) {
                 ChangeState(WeaponState.SearchTarget);
             }
             //3. Waiting for another attack as long as attackRate value
@@ -163,9 +125,6 @@ public class TowerWeapon : MonoBehaviour {
     }
 
     private void SpawnProjectile() {
-        //GameObject clone = Instantiate(projectilePrefab, spawnPoint.position, Quaternion.identity);
-        //clone.GetComponent<Projectile>().Setup(attackTarget, attackDamage);
-
         // Instantiate an object of projectile
         Projectile clone = Instantiate(projectile, spawnPoint.position, Quaternion.identity);
 
@@ -173,6 +132,6 @@ public class TowerWeapon : MonoBehaviour {
         clone.movement2D = clone.GetComponent<Movement2D>();
         clone.target = attackTarget;
         clone.damage = attackDamage;
-
+        Debug.Log(attackDamage);
     }
 }

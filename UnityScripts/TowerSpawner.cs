@@ -14,15 +14,12 @@ public class TowerSpawner : MonoBehaviour
     public GameObject tempTowerPrefab;
     private bool isOnTowerButton = false; //To check if the tower button is clicked
     private GameObject tempTowerClone = null; //Variable for deleting the temp tower after its usage
-    public void ReadyToSpawnTower()
-    {
-        if (isOnTowerButton == true)
-        {
+    public void ReadyToSpawnTower() {
+        if (isOnTowerButton == true) {
             return;
         }
 
-        if (SelectedTower.towerInstance.GetCost() > credit.Credits)
-        {
+        if (SelectedTower.towerInstance.GetCost() > credit.Credits) {
             return;
         }
 
@@ -30,15 +27,12 @@ public class TowerSpawner : MonoBehaviour
         tempTowerClone = Instantiate(tempTowerPrefab);
     }
 
-    public void SpawnTower(Transform tileTransform)
-    {
-        if (SelectedTower.towerInstance.GetTower() == null)
-        {
+    public void SpawnTower(Transform tileTransform) {
+        if (SelectedTower.towerInstance.GetTower() == null) {
             return;
         }
 
-        if (SelectedTower.towerInstance.GetCost() > CreditManager.CreditInstance.GetCredits())
-        {
+        if (SelectedTower.towerInstance.GetCost() > CreditManager.CreditInstance.GetCredits()) {
             Debug.Log("Not Enough Credits");
             return;
         }
@@ -46,8 +40,7 @@ public class TowerSpawner : MonoBehaviour
         Tile tile = tileTransform.GetComponent<Tile>();
 
         //Check if it is possible to build the tower
-        if (tile.IsBuildTower == true)
-        {
+        if (tile.IsBuildTower == true) {
             return;
         }
 

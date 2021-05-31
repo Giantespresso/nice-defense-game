@@ -2,8 +2,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
 
-public class TowerDataViewer : MonoBehaviour
-{
+public class TowerDataViewer : MonoBehaviour {
     [SerializeField]
     private Image towerImage;
     [SerializeField]
@@ -29,6 +28,7 @@ public class TowerDataViewer : MonoBehaviour
 
     public void PanelOn(Transform towerWeapon) {
         //Get the data for the tower stats
+        Debug.Log(towerWeapon.gameObject);
         currentTower = towerWeapon.GetComponent<TowerWeapon>();
         gameObject.SetActive(true);
         UpdateTowerData();

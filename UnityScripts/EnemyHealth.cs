@@ -7,7 +7,7 @@ public class EnemyHealth : MonoBehaviour {
     private float maxHealth; //The max health points that this enemy has
     private float currentHealth; //Current health
     private bool isDead = false; //If the enemy is dead, set this to 'true'
-    private Enemy enemy;
+    public Enemy enemy;
     private SpriteRenderer spriteRenderer;
 
     public float MaxHealth => maxHealth;
@@ -20,13 +20,13 @@ public class EnemyHealth : MonoBehaviour {
     }
 
     /* This function is exposed to enemy towers.
-     * When a tower attacks an enemy, this function
-     * reduces the health of this enemy*/
+    When a tower attacks an enemy, this function
+    reduces the health of this enemy*/
     public void RecieveDamage(float damage) {
         //if (isDead == true) return;
-
         // Subtract health from enemy
         currentHealth -= damage;
+
 
         //StopCoroutine("HitAlphaAnimation");
         //StartCoroutine("HitAlphaAnimation");
@@ -34,8 +34,15 @@ public class EnemyHealth : MonoBehaviour {
         /*If the enemy's health goes to 0, destroy it */
         if (currentHealth <= 0) {
             // Kill this unit
-            //Debug.Log("test");
-            enemy.OnDeath(EnemyDestroyType.kill);
+
+            // Experiment, check if network game, if so handle death differently
+
+            if (enemy == null) {
+                HandleDeath();
+            }
+            else {
+                enemy.OnDeath(EnemyDestroyType.kill);
+            }
         }
     }
 
@@ -53,5 +60,11 @@ public class EnemyHealth : MonoBehaviour {
         //Changing the opacity to 100%
         color.a = 1.0f;
         spriteRenderer.color = color;
+    }
+
+    private void HandleDeath()
+    {
+        //gameObject.GetComponent<EnemyLogistic>().pReference.CreditTransaction(gameObject.GetComponent<EnemyLogistic>().creditAmount);
+        gameObject.GetComponent<EnemyLogistic>().DestroyEnemy();
     }
 }

@@ -29,8 +29,7 @@ public class Movement2D : MonoBehaviour {
 
     /* Returns the distance that this enemy travelled, this allows us to decide which enemy
     towers should prioritize*/
-    public float GetDistanceTravelled()
-    {
+    public float GetDistanceTravelled() {
         return distanceTravelled;
     }
 }

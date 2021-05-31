@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /* This class is put on every button for tower selection
- * Whenever the player selects the button, the set tower changes */
+Whenever the player selects the button, the set tower changes */
 public class ButtonSelector : MonoBehaviour
 {
     // This buttons corresponding tower
@@ -24,14 +24,12 @@ public class ButtonSelector : MonoBehaviour
     private int towerCost;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         button.onClick.AddListener(SelectTower);
     }
 
     // On button click, set the player's selected tower
-    private void SelectTower()
-    {
+    private void SelectTower() {
         SelectedTower.towerInstance.SetTower(towerPrefab, towerCost);
         Instantiate(towerPreview);
     }

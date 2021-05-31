@@ -4,9 +4,8 @@ using UnityEngine;
 
 
 /* This class deals with the player's selected tower currently
- * The class manages what tower is selected, and the cost */
-public class SelectedTower : MonoBehaviour
-{
+The class manages what tower is selected, and the cost */
+public class SelectedTower : MonoBehaviour {
     // Create a static instance of the class to be referenced anywhere
     public static SelectedTower towerInstance;
 
@@ -17,8 +16,7 @@ public class SelectedTower : MonoBehaviour
     private int tCost;
 
     // Ensure there is always 1 instance of the selected tower
-    private void Awake()
-    {
+    private void Awake() {
         if (towerInstance == null)
         {
             towerInstance = this;
@@ -30,28 +28,24 @@ public class SelectedTower : MonoBehaviour
     }
 
     // Whenever a tower button is selected, set the selected tower
-    public void SetTower(GameObject t, int cost)
-    {
+    public void SetTower(GameObject t, int cost) {
         towerP = t;
         tCost = cost;
         Debug.Log(towerP);
     }
     
     // Getter for the selected tower
-    public GameObject GetTower()
-    {
+    public GameObject GetTower() {
         return towerP;
     }
 
     // Getter for the cost of the selected tower
-    public int GetCost()
-    {
+    public int GetCost() {
         return tCost;
     }
 
     // Setter to reset the tower
-    public void ResetTower()
-    {
+    public void ResetTower() {
         towerP = null;
         tCost = 0;
     }

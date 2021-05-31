@@ -8,12 +8,6 @@ public class Projectile : MonoBehaviour {
     public Transform target;
     public float damage;
 
-    //public void Setup(Transform target, int damage) {
-    //    movement2D = GetComponent<Movement2D>();
-    //    this.target = target;  //Target that the tower selected
-    //    this.damage = damage; //Damage that the tower has
-    //}
-
     private void Update() {
         //If there's a target
         if (target != null) {
